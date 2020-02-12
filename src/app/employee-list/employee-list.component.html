@@ -1,0 +1,19 @@
+<!--<h2>Employee List</h2>
+<ul *ngFor="let employee of employees">
+    <li>{{employee.appid}}. {{employee.name}} - {{employee.img_logo_url}}</li>
+    <img src="http://media.steampowered.com/steamcommunity/public/images/apps/{{employee.appid}}/{{employee.img_logo_url}}.jpg" alt="">
+</ul> -->
+<mat-grid-list cols="10" rowHeight="3:1">
+    <ng-container>
+        <mat-grid-tile *ngFor="let employee of employees">
+            <a href="https://store.steampowered.com/app/{{employee.appid}}/">
+                <img *ngIf = "employee.img_logo_url; else elseBlock" src="http://media.steampowered.com/steamcommunity/public/images/apps/{{employee.appid}}/{{employee.img_logo_url}}.jpg" alt="">
+                <ng-template #elseBlock>
+                    <div>
+                        <img style = "max-width: 100%; max-height: 100%" src="https://www.extremetech.com/wp-content/uploads/2018/03/541197-steam-logo-640x360.jpg" alt="">
+                    </div>
+                </ng-template>
+            </a>
+        </mat-grid-tile>
+    </ng-container>
+</mat-grid-list>
